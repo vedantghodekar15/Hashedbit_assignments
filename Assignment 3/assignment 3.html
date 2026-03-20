@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Assignment 3</title>
+</head>
+
+<body>
+
+<h1>JS Assignment 3</h1>
+
+<!-- Q1 -->
+<h3>Q1: Remove states starting with vowels</h3>
+<button onclick="q1()">Run</button>
+<p id="q1"></p>
+
+<!-- Q2 -->
+<h3>Q2: Reverse sentence</h3>
+<input type="text" id="str2" value="I love my India">
+<button onclick="q2()">Run</button>
+<p id="q2"></p>
+
+<!-- Q3 -->
+<h3>Q3: INDIA → INDONESIA</h3>
+<button onclick="q3()">Run</button>
+<p id="q3"></p>
+
+<!-- Q4 -->
+<h3>Q4: Count vowels & consonants</h3>
+<input type="text" id="str4" placeholder="Enter string">
+<button onclick="q4()">Run</button>
+<p id="q4"></p>
+
+<!-- Q5 -->
+<h3>Q5: Replace word</h3>
+<input type="text" id="sentence" placeholder="Enter sentence">
+<input type="text" id="wrong" placeholder="Wrong word">
+<input type="text" id="correct" placeholder="Correct word">
+<button onclick="q5()">Run</button>
+<p id="q5"></p>
+
+<!-- Q6 -->
+<h3>Q6: Numbers greater than 5</h3>
+<button onclick="q6()">Run</button>
+<p id="q6"></p>
+
+<!-- Q7 -->
+<h3>Q7: Students Average</h3>
+<button onclick="q7()">Run</button>
+<p id="q7"></p>
+
+<!-- Q8 -->
+<h3>Q8: Repeated digit sum</h3>
+<input type="number" id="num8">
+<button onclick="q8()">Run</button>
+<p id="q8"></p>
+
+<!-- Q9 -->
+<h3>Q9: Count words</h3>
+<input type="text" id="para">
+<button onclick="q9()">Run</button>
+<p id="q9"></p>
+
+<!-- Q10 -->
+<h3>Q10: Reverse string</h3>
+<input type="text" id="str10">
+<button onclick="q10()">Run</button>
+<p id="q10"></p>
+
+<!-- Q11 -->
+<h3>Q11: Student Average Object</h3>
+<button onclick="q11()">Run</button>
+<p id="q11"></p>
+
+<script>
+
+// Q1
+function q1() {
+    let states = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"];
+    let result = states.filter(s => !"AEIOUaeiou".includes(s[0]));
+    document.getElementById("q1").innerHTML = result;
+}
+
+// Q2
+function q2() {
+    let str = document.getElementById("str2").value;
+    let result = str.split(" ").reverse().join(" ");
+    document.getElementById("q2").innerHTML = result;
+}
+
+// Q3
+function q3() {
+    let arr = "INDIA".split("");
+    arr.splice(3, 2, "O", "N", "E", "S", "I", "A");
+    document.getElementById("q3").innerHTML = arr.join("");
+}
+
+// Q4
+function q4() {
+    let str = document.getElementById("str4").value.toLowerCase();
+    let vowels = "aeiou";
+    let v = 0, c = 0;
+
+    for (let ch of str) {
+        if (/[a-z]/.test(ch)) {
+            vowels.includes(ch) ? v++ : c++;
+        }
+    }
+    document.getElementById("q4").innerHTML = `Vowels: ${v}, Consonants: ${c}`;
+}
+
+// Q5
+function q5() {
+    let s = document.getElementById("sentence").value;
+    let w = document.getElementById("wrong").value;
+    let c = document.getElementById("correct").value;
+
+    let result = s.replace(w, c);
+    document.getElementById("q5").innerHTML = result;
+}
+
+// Q6
+function q6() {
+    let arr = [1,2,3,9,10,7,5,4,3];
+    let result = arr.filter(n => n > 5);
+    document.getElementById("q6").innerHTML = result;
+}
+
+// Q7
+function q7() {
+    const students = [
+        { name: "Ram", scores: [80, 70, 60] },
+        { name: "Mohan", scores: [80, 70, 90] },
+        { name: "Sai", scores: [60, 70, 80] },
+        { name: "Hemang", scores: [90, 90, 80, 80] },
+    ];
+
+    let result = students.map(s => {
+        let avg = s.scores.reduce((a,b)=>a+b,0) / s.scores.length;
+        return { name: s.name, average: avg };
+    });
+
+    document.getElementById("q7").innerHTML = JSON.stringify(result);
+}
+
+// Q8
+function q8() {
+    let num = document.getElementById("num8").value;
+
+    function sum(n) {
+        while (n > 9) {
+            n = n.toString().split("").reduce((a,b)=>a + Number(b), 0);
+        }
+        return n;
+    }
+
+    document.getElementById("q8").innerHTML = sum(num);
+}
+
+// Q9
+function q9() {
+    let text = document.getElementById("para").value.trim();
+    let count = text ? text.split(/\s+/).length : 0;
+    document.getElementById("q9").innerHTML = "Words: " + count;
+}
+
+// Q10
+function q10() {
+    let str = document.getElementById("str10").value;
+    let result = str.split("").reverse().join("");
+    document.getElementById("q10").innerHTML = result;
+}
+
+// Q11
+function q11() {
+    let data = {
+        student1: { subject1:44, subject2:56, subject3:87, subject4:97, subject5:37 },
+        student2: { subject1:44, subject2:56, subject3:87, subject4:97, subject5:37 },
+        student3: { subject1:44, subject2:56, subject3:87, subject4:97, subject5:37 }
+    };
+
+    let result = {};
+
+    for (let key in data) {
+        let scores = Object.values(data[key]);
+        let avg = scores.reduce((a,b)=>a+b,0) / scores.length;
+        result[key] = { average: avg };
+    }
+
+    document.getElementById("q11").innerHTML = JSON.stringify(result);
+}
+
+</script>
+
+</body>
+</html>
