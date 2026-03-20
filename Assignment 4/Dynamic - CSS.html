@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Styling Tool</title>
+
+    <style>
+        .text-here {
+            font-size: 55px;
+            font-family: sans-serif;
+            color: black;
+            text-decoration: none;
+            font-style: normal;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Text -->
+<div class='text-here' id='text-container'>
+    This is some example text
+</div>
+
+<br>
+
+<!-- Color -->
+<input type="text" id="colorbox" placeholder="Enter color name">
+<button id="colorchange">Change Colour</button>
+
+<br><br>
+
+<!-- Font Size -->
+<input type="range" id="fontsize" min="10" max="100" value="55">
+
+<br><br>
+
+<!-- Style Buttons -->
+<button id="italic" class="stylebt">Italics</button>
+<button id="underline" class="stylebt">Underline</button>
+<button id="bold" class="stylebt">Bold</button>
+
+<br><br>
+
+<!-- Font Family -->
+<select id="list">
+    <option value="serif">Serif</option>
+    <option value="sans-serif">Sans-Serif</option>
+    <option value="monospace">Monospace</option>
+    <option value="cursive">Cursive</option>
+    <option value="fantasy">Fantasy</option>
+</select>
+
+<br><br>
+
+<!-- Get CSS -->
+<button id="getstyle">Get CSS</button>
+
+<br><br>
+
+<p id="css-props"></p>
+
+<script>
+
+let text = document.getElementById("text-container");
+
+// Change Color
+document.getElementById("colorchange").onclick = function () {
+    let color = document.getElementById("colorbox").value;
+    text.style.color = color;
+};
+
+// Change Font Size
+document.getElementById("fontsize").oninput = function () {
+    text.style.fontSize = this.value + "px";
+};
+
+// Italic Toggle
+document.getElementById("italic").onclick = function () {
+    text.style.fontStyle =
+        text.style.fontStyle === "italic" ? "normal" : "italic";
+};
+
+// Underline Toggle
+document.getElementById("underline").onclick = function () {
+    text.style.textDecoration =
+        text.style.textDecoration === "underline" ? "none" : "underline";
+};
+
+// Bold Toggle
+document.getElementById("bold").onclick = function () {
+    text.style.fontWeight =
+        text.style.fontWeight === "bold" ? "normal" : "bold";
+};
+
+// Font Family Change
+document.getElementById("list").onchange = function () {
+    text.style.fontFamily = this.value;
+};
+
+// Get CSS Properties
+document.getElementById("getstyle").onclick = function () {
+    let css = `
+color: ${text.style.color || "black"};
+font-size: ${text.style.fontSize || "55px"};
+font-family: ${text.style.fontFamily || "sans-serif"};
+text-decoration: ${text.style.textDecoration || "none"};
+font-style: ${text.style.fontStyle || "normal"};
+font-weight: ${text.style.fontWeight || "normal"};
+    `;
+
+    document.getElementById("css-props").innerText = css;
+};
+
+</script>
+
+</body>
+</html>

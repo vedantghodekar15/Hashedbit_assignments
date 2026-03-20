@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toggle Paragraph</title>
+</head>
+
+<body>
+
+<h1>I am a headline made with HTML</h1>
+
+<br />
+
+<p id="useless-paragraph">Useless paragraph.</p>
+
+<br />
+
+<button onclick="toggleVisibility()">Toggle Button</button>
+
+<script>
+function toggleVisibility() {
+    let para = document.getElementById("useless-paragraph");
+
+    if (para.style.display === "none") {
+        para.style.display = "block";  // show
+    } else {
+        para.style.display = "none";   // hide
+    }
+}
+</script>
+
+</body>
+</html>

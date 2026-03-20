@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Div Task</title>
+</head>
+
+<body>
+
+<h2>Create Div Example</h2>
+
+<!-- Container -->
+<div id="container"></div>
+
+<br>
+
+<!-- Inputs to test -->
+<input type="number" id="width" placeholder="Enter width">
+<input type="number" id="height" placeholder="Enter height">
+<input type="text" id="text" placeholder="Enter text">
+
+<br><br>
+
+<button onclick="handleCreate()">Create Div</button>
+
+<script>
+// Given function
+function createDiv(width, height, text) {
+    let newDiv = document.createElement("div");
+
+    newDiv.style.width = width + "px";
+    newDiv.style.height = height + "px";
+    newDiv.style.border = "1px solid black";
+    newDiv.style.margin = "10px";
+    newDiv.style.display = "flex";
+    newDiv.style.alignItems = "center";
+    newDiv.style.justifyContent = "center";
+
+    newDiv.innerText = text;
+
+    document.getElementById("container").appendChild(newDiv);
+}
+
+// Helper function for button
+function handleCreate() {
+    let w = document.getElementById("width").value;
+    let h = document.getElementById("height").value;
+    let t = document.getElementById("text").value;
+
+    createDiv(w, h, t);
+}
+
+// Do not change this
+window.createDiv = createDiv;
+</script>
+
+</body>
+</html>
