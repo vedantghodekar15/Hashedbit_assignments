@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Practice 1 - Delta</title>
+</head>
+
+<body>
+
+<h1>JS Practice 1 - Delta</h1>
+
+<!-- Q1 -->
+<h3>1. Scope Demo</h3>
+<button onclick="q1()">Run</button>
+<p id="q1"></p>
+
+<!-- Q2 -->
+<h3>2. Second Fruit</h3>
+<button onclick="q2()">Run</button>
+<p id="q2"></p>
+
+<!-- Q3 -->
+<h3>3. Push & Pop</h3>
+<button onclick="q3()">Run</button>
+<p id="q3"></p>
+
+<!-- Q4 -->
+<h3>4. Square Numbers</h3>
+<button onclick="q4()">Run</button>
+<p id="q4"></p>
+
+<!-- Q5 -->
+<h3>5. Filter Odd Numbers</h3>
+<button onclick="q5()">Run</button>
+<p id="q5"></p>
+
+<!-- Q6 -->
+<h3>6. Greeting</h3>
+<button onclick="q6()">Run</button>
+<p id="q6"></p>
+
+<!-- Q7 -->
+<h3>7. Rectangle Area</h3>
+<button onclick="q7()">Run</button>
+<p id="q7"></p>
+
+<!-- Q8 -->
+<h3>8. Object Keys</h3>
+<button onclick="q8()">Run</button>
+<p id="q8"></p>
+
+<!-- Q9 -->
+<h3>9. Merge Objects</h3>
+<button onclick="q9()">Run</button>
+<p id="q9"></p>
+
+<!-- Q10 -->
+<h3>10. Sum using Reduce</h3>
+<button onclick="q10()">Run</button>
+<p id="q10"></p>
+
+<script>
+
+// Q1
+function q1() {
+    let result = "";
+    var a = 10;
+    let b = 20;
+    const c = 30;
+
+    if (true) {
+        var a = 100;
+        let b = 200;
+        const c = 300;
+        result += `Inside: ${a}, ${b}, ${c} <br>`;
+    }
+
+    result += `Outside: ${a}, ${b}, ${c}`;
+    document.getElementById("q1").innerHTML = result;
+}
+
+// Q2
+function q2() {
+    let fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
+    document.getElementById("q2").innerHTML = fruits[1];
+}
+
+// Q3
+function q3() {
+    let arr = [1,2,3];
+    arr.push(4);
+    arr.pop();
+    document.getElementById("q3").innerHTML = arr;
+}
+
+// Q4
+function q4() {
+    let arr = [1,2,3,4];
+    let result = arr.map(n => n*n);
+    document.getElementById("q4").innerHTML = result;
+}
+
+// Q5
+function q5() {
+    let arr = [1,2,3,4,5,6];
+    let result = arr.filter(n => n % 2 !== 0);
+    document.getElementById("q5").innerHTML = result;
+}
+
+// Q6
+function q6() {
+    let person = {name:"Vedant", age:21, occupation:"Student"};
+    document.getElementById("q6").innerHTML =
+        `Hello, my name is ${person.name}, I am a ${person.occupation}`;
+}
+
+// Q7
+function q7() {
+    let rect = {width:5, height:10};
+    document.getElementById("q7").innerHTML = rect.width * rect.height;
+}
+
+// Q8
+function q8() {
+    let obj = {a:1, b:2, c:3};
+    document.getElementById("q8").innerHTML = Object.keys(obj);
+}
+
+// Q9
+function q9() {
+    let obj1 = {a:1};
+    let obj2 = {b:2};
+    let merged = Object.assign({}, obj1, obj2);
+    document.getElementById("q9").innerHTML = JSON.stringify(merged);
+}
+
+// Q10
+function q10() {
+    let arr = [1,2,3,4,5];
+    let sum = arr.reduce((a,b) => a+b, 0);
+    document.getElementById("q10").innerHTML = sum;
+}
+
+</script>
+
+</body>
+</html>
